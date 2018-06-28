@@ -1,0 +1,199 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Demo ASM Collection",
+		"_postman_id": "4f263e23-fcf5-49bc-724c-7f2d5860f67a",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST New ASM Policy",
+			"request": {
+				"url": "https://10.128.1.245/mgmt/tm/asm/policies",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"API_ASM_Policy\"}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST - URL Filter",
+			"request": {
+				"url": "https://10.128.1.245/mgmt/tm/asm/policies/SZ-bD4Tgcq2AMKgqzV9LVw/urls?ver=12.1.1",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"/fred3.html\",\n            \"description\": \"Fred's API Created URL\"}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST - File Type",
+			"request": {
+				"url": "https://10.128.1.245/mgmt/tm/asm/policies/SZ-bD4Tgcq2AMKgqzV9LVw/filetypes?ver=12.1.1",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"xml\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST New DOS Profile (name)",
+			"request": {
+				"url": "https://10.128.1.245/mgmt/tm/security/dos/profile/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"API_DOS\"}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST New DOS BotDefense",
+			"request": {
+				"url": "https://10.128.1.245/mgmt/tm/security/dos/profile/~Common~API_DOS/application",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"API_DOS\",\"botDefense\": {\n                \"crossDomainRequests\": \"allow-all\",\n                \"gracePeriod\": 300,\n                \"mode\": \"during-attacks\",\n                \"urlWhitelist\": [\n                    \"/fred.html\",\n                    \"/index.html\"\n                ]\n            }\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST VS DOS Profile Add",
+			"request": {
+				"url": "https://10.128.1.245/mgmt/tm/ltm/virtual/~Common~p80_virtual/profiles",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"API_DOS\"}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Put Update DOS WhiteList",
+			"request": {
+				"url": "https://10.128.1.245/mgmt/tm/security/dos/profile/~Common~API_DOS/application/API_DOS",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n            \"ipWhitelist\": [\n              {\"name\": \"192.168.1.0/24\"}\n              {\"name\": \"192.168.0.0/24\"}\n            ]\n}        \n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Put Update GeoLocation",
+			"request": {
+				"url": "https://10.128.1.245/mgmt/tm/security/dos/profile/~Common~API_DOS/application/API_DOS",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n            \"geolocations\": [\n                {\n                    \"name\": \"Germany\",\n                    \"blackListed\": true\n                }\n    ]\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET Event Requests",
+			"request": {
+				"url": "https://192.168.1.99/mgmt/tm/asm/events/requests",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"API_ASM_Policy\"}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH - Allow Blocked Request",
+			"request": {
+				"url": "https://192.168.1.99/mgmt/tm/asm/policies/DBhziKrW8XUTfA1ODxnnSg/blocking-settings/http-protocols/x2_h2OCEYkNNgASHWFviFw?ver=12.1.0",
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n\n    \"enabled\": \"false\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

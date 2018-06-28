@@ -1,0 +1,187 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Big-IQ ASM Collection",
+		"_postman_id": "9977be17-8049-25d2-8c66-21c03d275e8f",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Signature Update",
+			"request": {
+				"url": "https://10.128.1.200/mgmt/cm/asm/signatures/schedule-update",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "        {\n            \"addresses\": [\n                {\n                    \"address\": \"10.128.10.1\",\n                    \"description\": \"Test\"\n                }\n            ],\n            \"partition\": \"Common\",\n            \"name\": \"API_Cinco_Host\"\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Policies",
+			"request": {
+				"url": "https://10.128.1.200/mgmt/cm/asm/working-config/policies",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "        {\n            \"addresses\": [\n                {\n                    \"address\": \"10.128.10.1\",\n                    \"description\": \"Test\"\n                }\n            ],\n            \"partition\": \"Common\",\n            \"name\": \"API_Cinco_Host\"\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create New Policy (basics)",
+			"request": {
+				"url": "https://10.128.1.200/mgmt/cm/asm/working-config/policies",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"CMCSA_ASM_Policy\",\n\"partition\": \"Common\",\n  \"description\": \"API Created Via REST\",\n \"fullPath\": \"/Common/API_ASM_Policy\",\n \"applicationLanguage\": \"utf-8\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Virtual Servers",
+			"request": {
+				"url": "https://10.128.1.200/mgmt/cm/asm/working-config/virtual-servers",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"API_ASM_Policy\",\n\"partition\": \"Common\",\n  \"description\": \"API Created Via REST\",\n \"fullPath\": \"/Common/API_ASM_Policy\",\n \"applicationLanguage\": \"utf-8\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Specific Virtual Server",
+			"request": {
+				"url": "https://10.128.1.200/mgmt/cm/asm/working-config/virtual-servers/b6f8a7d6-b50c-3c99-bbe9-339304384968",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						"{\"name\": \"API_ASM_Policy\",\n\"partition\": \"Common\",\n  \"description\": \"API Created Via REST\",\n \"fullPath\": \"/Common/API_ASM_Policy\",\n \"applicationLanguage\": \"utf-8\"}"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Add New Policy to Virtual",
+			"request": {
+				"url": "https://10.128.1.200/mgmt/cm/asm/working-config/virtual-servers/b6f8a7d6-b50c-3c99-bbe9-339304384968",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"address\": \"88.88.88.88:80\",\n    \"asmEnabled\": true,\n    \"isInactivePoliciesHolder\": false,\n    \"hasAttachedPolicies\": true,\n    \"mirror\": \"disabled\",\n    \"attachedPoliciesReferences\": [\n        {\n            \"id\": \"c9446f9f-2385-3697-80bc-f09c799a7f25\",\n            \"name\": \"API_ASM_Policy\",\n            \"kind\": \"cm:asm:working-config:policies:policystate\",\n            \"partition\": \"Common\",\n            \"link\": \"https://localhost/mgmt/cm/asm/working-config/policies/c9446f9f-2385-3697-80bc-f09c799a7f25\"\n        }\n    ],\n    \"isAdvanced\": false,\n    \"partition\": \"Common\",\n    \"deviceReference\": {\n        \"id\": \"4bf7edde-c7c1-4fe9-881e-f9c51d02f28d\",\n        \"name\": \"bigip-bigiq-test1.com\",\n        \"kind\": \"shared:resolver:device-groups:restdeviceresolverdevicestate\",\n        \"machineId\": \"4bf7edde-c7c1-4fe9-881e-f9c51d02f28d\",\n        \"link\": \"https://localhost/mgmt/shared/resolver/device-groups/cm-asm-allAsmDevices/devices/4bf7edde-c7c1-4fe9-881e-f9c51d02f28d\"\n    },\n    \"name\": \"asm\"\n    \n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST  New SnapShot",
+			"request": {
+				"url": "https://10.128.1.200/mgmt/cm/asm/tasks/snapshot-config",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n{\"name\": \"Test_API\", \"skipDistribution\": false}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST  New Deployment",
+			"request": {
+				"url": "https://10.128.1.200/mgmt/cm/asm/tasks/deploy-configuration",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n{\"name\": \"Test_API\", \"skipDistribution\": false}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST  New Specific Host",
+			"request": {
+				"url": "https://10.128.1.200/mgmt/cm/asm/tasks/deploy-configuration",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"Test_API\", \"skipDistribution\": false,\n \"deviceReferences\": [\n                {\n                    \"link\": \"https://localhost/mgmt/shared/resolver/device-groups/cm-asm-allAsmDevices/devices/76354dab-ff1d-4319-ad00-10cb14f263f4\"\n                }\n]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
