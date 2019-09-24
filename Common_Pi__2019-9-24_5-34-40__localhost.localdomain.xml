@@ -23,7 +23,7 @@
     <inspect_http_uploads>false</inspect_http_uploads>
   </antivirus>
   <cookie_settings>
-    <maximum_cookie_length>8192</maximum_cookie_length>
+    <maximum_cookie_length>8092</maximum_cookie_length>
   </cookie_settings>
   <header_settings>
     <maximum_http_length>8192</maximum_http_length>
